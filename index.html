@@ -100,6 +100,7 @@
             transition: background 0.3s, transform 0.3s;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin: 10px;
+            display: none; /* Initially hidden */
         }
         .add-to-home-button:hover {
             background: linear-gradient(90deg, #1976D2, #21CBF3);
@@ -150,6 +151,7 @@
                 <img src="https://benjamin34237527405245.github.io/RKCalender/kal.png" alt="Website 1 Icon">
                 Calender
             </a>
+             <!-- Add new buttons here -->
             <a href="https://benjamin34237527405245.github.io/joga/" class="button-wrapper" id="openUrlButton2">
                 <img src="https://benjamin34237527405245.github.io/joga/meditation.png" alt="Website 2 Icon">
                 Yoga : Self Help
@@ -219,6 +221,7 @@
             event.preventDefault();
             playTransitionAndNavigate('https://benjamin34237527405245.github.io/RKCalender/');
         });
+        // Add event listener for new button
 
         document.getElementById('openUrlButton2').addEventListener('click', (event) => {
             event.preventDefault();
@@ -251,6 +254,11 @@
                 });
             }
         });
+
+        // Check if the app is already installed
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            document.getElementById('addToHomeButton').style.display = 'none';
+        }
 
         document.getElementById('clearCacheButton').addEventListener('click', () => {
             if ('caches' in window) {
