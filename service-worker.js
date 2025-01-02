@@ -3,7 +3,7 @@ self.addEventListener('install', (event) => {
         caches.open('portal-cache').then((cache) => {
             return cache.addAll([
                 'index.html',
-                'manifest.json',
+
                 // Add other assets here
             ]);
         })
