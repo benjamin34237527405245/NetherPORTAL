@@ -1,7 +1,7 @@
 {
     "name": "Portal",
     "short_name": "Portal",
-    "start_url": "portal.html",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#6200ea",
