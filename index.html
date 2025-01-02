@@ -89,6 +89,26 @@
             background: linear-gradient(90deg, #FF5722, #FF7043);
             transform: scale(1);
         }
+        .add-to-home-button {
+            background: linear-gradient(90deg, #2196F3, #21CBF3);
+            color: #000000;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+        .add-to-home-button:hover {
+            background: linear-gradient(90deg, #1976D2, #21CBF3);
+            transform: scale(1.05);
+        }
+        .add-to-home-button:active {
+            background: linear-gradient(90deg, #2196F3, #21CBF3);
+            transform: scale(1);
+        }
         .transition-overlay {
             position: absolute;
             top: 0;
@@ -139,6 +159,7 @@
                 ChillBall : Stress Relief <br>(in development)
             </a>
             <button class="clear-cache-button" id="clearCacheButton">Clear Cache</button>
+            <button class="add-to-home-button" id="addToHomeButton">Add to Home Screen</button>
         </div>
     </div>
 
@@ -207,6 +228,28 @@
         document.getElementById('openUrlButton3').addEventListener('click', (event) => {
             event.preventDefault();
             playTransitionAndNavigate('https://benjamin34237527405245.github.io/ChillBall/');
+        });
+
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+            document.getElementById('addToHomeButton').style.display = 'block';
+        });
+
+        document.getElementById('addToHomeButton').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the A2HS prompt');
+                    } else {
+                        console.log('User dismissed the A2HS prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
         });
 
         document.getElementById('clearCacheButton').addEventListener('click', () => {
