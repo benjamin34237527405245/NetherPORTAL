@@ -102,8 +102,8 @@
             z-index: 1000;
             visibility: hidden;
         }
-        .transition-overlay audio {
-            display: none; /* Hide the audio element */
+        .transition-overlay.show {
+            visibility: visible;
         }
         .video-container {
             display: flex;
@@ -177,7 +177,7 @@
         function playTransitionAndNavigate(url) {
             const transitionOverlay = document.getElementById('transitionOverlay');
             const transitionAudio = document.getElementById('transitionAudio');
-            transitionOverlay.style.visibility = 'visible';
+            transitionOverlay.classList.add('show');
             transitionAudio.play().then(() => {
                 setTimeout(() => {
                     window.location.href = url;
@@ -187,6 +187,11 @@
                 window.location.href = url; // Fallback to immediate navigation
             });
         }
+
+        window.addEventListener('pageshow', (event) => {
+            const transitionOverlay = document.getElementById('transitionOverlay');
+            transitionOverlay.classList.remove('show');
+        });
 
         document.getElementById('openUrlButton1').addEventListener('click', (event) => {
             event.preventDefault();
