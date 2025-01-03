@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000000;
+            background-color: #f0fc6c;
             font-family: 'Canva sans', sans-serif;
             margin: 0;
             padding: 0;
@@ -279,6 +279,22 @@
                 video.playbackRate = 0.5; // Set the desired playback speed (e.g., 1.5x)
             }
         });
+
+        // Ensure video and audio play on mobile devices
+        document.addEventListener('click', () => {
+            const video = document.getElementById('magicVideo');
+            const audio = document.getElementById('audioElement');
+            if (video) {
+                video.play().catch(error => {
+                    console.error('Video playback failed:', error);
+                });
+            }
+            if (audio) {
+                audio.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                });
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
