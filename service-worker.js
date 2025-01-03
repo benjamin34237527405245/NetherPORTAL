@@ -1,7 +1,11 @@
-const CACHE_NAME = 'portal-cache-v2'; // Update cache name to ensure new cache is used
+const CACHE_NAME = 'portal-cache-v3'; // Update cache name to ensure new cache is used
 const urlsToCache = [
-
-    
+    'index.html',
+    'manifest.json',
+    'old.png',
+    'portal.png',
+    'magic.mp4',
+    'tran.mp4',
 ];
 
 self.addEventListener('install', (event) => {
