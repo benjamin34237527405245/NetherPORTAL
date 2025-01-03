@@ -136,7 +136,7 @@
 <body>
     <div class="container">
         <div class="video-container">
-            <video class="video-heading" autoplay loop muted>
+            <video class="video-heading" autoplay loop muted playsinline id="magicVideo">
                 <source src="magic.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -221,7 +221,6 @@
             event.preventDefault();
             playTransitionAndNavigate('https://benjamin34237527405245.github.io/RKCalender/');
         });
-        // Add event listener for new button
 
         document.getElementById('openUrlButton2').addEventListener('click', (event) => {
             event.preventDefault();
@@ -270,6 +269,14 @@
                     alert('Cache cleared!');
                     location.reload(); // Reload the page to ensure new service worker is used
                 });
+            }
+        });
+
+        // Adjust the playback speed of the video
+        window.addEventListener('load', () => {
+            const video = document.getElementById('magicVideo');
+            if (video) {
+                video.playbackRate = 0.5; // Set the desired playback speed (e.g., 1.5x)
             }
         });
     </script>
