@@ -166,7 +166,7 @@
     </div>
 
     <div class="transition-overlay" id="transitionOverlay">
-        <audio id="transitionAudio" autoplay>
+        <audio id="transitionAudio">
             <source src="tran.mp4" type="audio/mp4">
             Your browser does not support the audio tag.
         </audio>
@@ -200,12 +200,14 @@
         function playTransitionAndNavigate(url) {
             const transitionOverlay = document.getElementById('transitionOverlay');
             const transitionAudio = document.getElementById('transitionAudio');
+            const backgroundAudio = document.getElementById('audioElement');
             transitionOverlay.classList.add('show');
+            backgroundAudio.pause(); // Pause the background audio
             transitionAudio.currentTime = 0; // Reset audio to the beginning
             transitionAudio.play().then(() => {
                 setTimeout(() => {
                     window.location.href = url;
-                }, transitionAudio.duration * 1000); // Wait for the audio to finish
+                }, 3000); // Wait for 3 seconds before navigating
             }).catch(error => {
                 console.error('Audio playback failed:', error);
                 window.location.href = url; // Fallback to immediate navigation
