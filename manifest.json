@@ -1,6 +1,6 @@
 {
-    "name": "Portal",
-    "short_name": "Portal",
+    "name": "Nether Portal",
+    "short_name": "Nether",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#ffffff",
